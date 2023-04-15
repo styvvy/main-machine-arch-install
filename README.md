@@ -29,6 +29,11 @@ timedatectl set-ntp true
 reflector --country Germany,Austria --age 12 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
 ```
 
+## update pacman.conf for parallel downloading
+```
+sed -i "s/#ParallelDownloads = 5/ParallelDownloads = 15/g" /etc/pacman.conf && sudo pacman -Sy
+```
+
 ## install basic system and packages
 ```
 pacstrap /mnt base base-devel linux linux-headers linux-firmware python3 grub efibootmgr os-prober networkmanager ntp openssh neovim
@@ -69,12 +74,18 @@ passwd
 useradd -m stywen && usermod -G wheel stywen && passwd stywen
 ```
 
-## enable wheel
+### MISC
 ```
-sed -i "s/# %wheel ALL=(ALL:ALL) ALL/%wheel ALL=(ALL:ALL) ALL/g" /etc/sudoers
+sed -i "s/# %wheel ALL=(ALL:ALL) ALL/%wheel ALL=(ALL:ALL) ALL/g" /etc/sudoers && echo "stywen ALL=NOPASSWD: ALL" >> /etc/sudoers && sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
+```
+### exit and reboot
+```
+exit
+umount -R /mnt
+reboot
 ```
 
-## setup multilib
+### install yay
 ```
-sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
+cd /opt && sudo git clone https://aur.archlinux.org/yay-git.git && sudo chown -R $USER:$USER ./yay-git && cd yay-git && makepkg -si
 ```
