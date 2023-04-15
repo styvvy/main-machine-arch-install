@@ -18,7 +18,7 @@ yes | mkfs.fat /dev/nvme0n1p1 && yes | mkfs.ext4 -L ROOT /dev/nvme0n1p2 && yes| 
 
 ## mount partitions
 ```
-mount /dev/nvme0n1p2 /mnt && mkdir /mnt/{boot,home,data,Virtualization,Storage} && mount /dev/nvme0n1p1 /mnt/boot && mount /dev/nvme0n1p3 /mnt/home && mount /dev/nvme0n1p4 /mnt/data && mount /dev/nvme1n1 /mnt/Virtualization/ && mount /dev/sdc /mnt/Storage
+mount /dev/nvme0n1p2 /mnt && mkdir /mnt/{boot,home,data,Virtualization,Storage} && mount /dev/nvme0n1p1 /mnt/boot && mount /dev/nvme0n1p3 /mnt/home && mount /dev/nvme1n1 /mnt/Virtualization/ && mount /dev/sdc /mnt/Storage
 ```
 
 ## set ntp
