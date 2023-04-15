@@ -10,8 +10,10 @@ cfdisk /dev/nvme0n1
 ```
 
 ## format partitions and label them
+
 ```
-yes | mkfs.fat /dev/nvme0n1p1 && yes | mkfs.ext4 -L ROOT /dev/nvme0n1p2 && yes| mkfs.ext4 -L HOME /dev/nvme0n1p3 && yes | mkfs.ext4 -L DATA /dev/nvme0n1p4 && fatlabel /dev/nvme0n1p1 BOOT
+
+yes | mkfs.fat /dev/nvme0n1p1 && yes | mkfs.ext4 -L ROOT /dev/nvme0n1p2 && yes| mkfs.ext4 -L HOME /dev/nvme0n1p3 && fatlabel /dev/nvme0n1p1 BOOT
 ```
 
 ## mount partitions
