@@ -31,7 +31,7 @@ reflector --country Germany,Austria --age 12 --protocol https --sort rate --save
 
 ## install basic system and packages
 ```
-pacstrap /mnt base base-devel linux linux-firmware python3 grub efibootmgr os-prober networkmanager ntp openssh vim neofetch
+pacstrap /mnt base base-devel linux linux-headers linux-firmware python3 grub efibootmgr os-prober networkmanager ntp openssh neovim
 ```
 
 ## generate fstab
